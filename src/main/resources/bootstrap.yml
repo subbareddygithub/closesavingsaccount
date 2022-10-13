@@ -1,0 +1,70 @@
+management: 
+  endpoint: 
+    metrics: 
+      enabled: true
+    prometheus: 
+      enabled: true
+  endpoints: 
+    web: 
+      exposure: 
+        include: "*"
+  metrics: 
+    export: 
+      prometheus: 
+        enabled: true
+spring: 
+  application: 
+    name: closesavingsaccount
+  cloud: 
+    config: 
+      failFast: false
+      retry: 
+        maxAttempts: 20
+      uri: ${CONFIG_SERVER_URI}
+  profiles: 
+    active: ${PROFILE:dev}
+  sleuth: 
+    sampler: 
+      percentage: 1
+  api: 
+    correspondence: 
+      context-path: /Correspondence/Initiate
+      hosturl: /test
+      jolt-filename: Correspondence832078-jolt.json
+    customerproductsandservices: 
+      context-path: /CustomerProductsandServices/{customerproductsandservicesId}/Control
+      hosturl: /test
+      jolt-filename: CustomerProductsAndServices546508-jolt.json
+    financialaccounting: 
+      context-path: /FinancialAccounting/Initiate
+      hosturl: /test
+      jolt-filename: FinancialAccounting322361-jolt.json
+    issueddeviceadministration: 
+      context-path: /IssuedDeviceAdministration/Initiate
+      hosturl: /test
+      jolt-filename: IssuedDeviceAdministration658455-jolt.json
+    partyreferencedatadirectory: 
+      context-path: /PartyReferenceDataDirectory/Register
+      hosturl: /test
+      jolt-filename: PartyReferenceDataDirectory901459-jolt.json
+    paymentorder: 
+      context-path: /PaymentOrder/Initiate
+      hosturl: /test
+      jolt-filename: PaymentOrder721606-jolt.json
+    positionkeeping: 
+      context-path: /PositionKeeping/Initiate
+      hosturl: /test
+      jolt-filename: PositionKeeping997381-jolt.json
+    savingsaccount : 
+      context-path: /SavingsAccount/Initiate
+      hosturl: /test
+      jolt-filename: SavingsAccount 580770-jolt.json
+    servicingorder: 
+      context-path: /ServicingOrder/Initiate
+      hosturl: /test
+      jolt-filename: ServicingOrder904488-jolt.json
+  datasource: 
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    password: ${mysql_pwd}
+    url: jdbc:mysql://${mysql_url}:3306/camunda
+    username: ${mysql_user}
